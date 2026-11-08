@@ -67,6 +67,12 @@ def get_bookmarks():
     """Return curated project bookmarks for quick navigation."""
     candidates = [
         {
+            "name": "Trending Hero Props (Radar)",
+            "subtitle": "5 AI-to-3D Print Concepts for Tripo",
+            "icon": "sparkles",
+            "path": os.path.join(BASE_DIR, "Trending_Hero_Props"),
+        },
+        {
             "name": "Embercore Armor (All)",
             "subtitle": "Light-Passthrough Filigree Armor",
             "icon": "shield",
