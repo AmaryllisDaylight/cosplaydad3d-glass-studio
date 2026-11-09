@@ -1045,11 +1045,21 @@ def api_tripo_pull_stl(job_id):
 
 if __name__ == "__main__":
     import webbrowser
+    import socket
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    local_ip = "127.0.0.1"
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("8.8.8.8", 80))
+        local_ip = s.getsockname()[0]
+        s.close()
+    except Exception:
+        pass
     print("=" * 68)
     print("  CosplayDad3D Glass Studio - Image & Tripo 3D Hub")
-    print("  Local URL: http://127.0.0.1:5050")
+    print(f"  Local PC URL:   http://127.0.0.1:5050")
+    print(f"  Mobile LAN URL: http://{local_ip}:5050")
     print("=" * 68)
     if "--no-browser" not in sys.argv:
         threading.Timer(1.2, lambda: webbrowser.open("http://127.0.0.1:5050")).start()
-    app.run(host="127.0.0.1", port=5050, debug=False, threaded=True)
+    app.run(host="0.0.0.0", port=5050, debug=False, threaded=True)
